@@ -34,3 +34,5 @@ If you want to use this solution, you will need to configure Azure :
 7. Once the storage account is created, click on it and create 2 new containers in it (choose **Blob** or **Container** for *Public Access Level*) named **data** and **puzzlejson**.
 
 (Note that all proposed names can be changed but you will need to modify them in the c# script Read_Write_json.cs)
+
+8. Upload the puzzle grid json file "puzzle_data.json" in the puzzlejson container
