@@ -1,5 +1,6 @@
 ## Table Of Contents
 * [Introduction](#introduction)
+* [Generate The Puzzle File](#generate-the-puzzle-file)
 * [Setup Unity and Azure](#setup-unity-and-azure)
 
 ## Introduction
@@ -16,6 +17,16 @@ As this game was used for data collection purpose, for each session (1/2/3) the 
 * Level of Difficulty
 * Time to solve
 * Puzzle state (every second)
+
+## Generate the Puzzle file
+The puzzle played in the game are pregenerated with the python notebook **Game_mx.ipynb**, with this script you can generate 200 (or how many you want) puzzle and write the grid in a json file. This file will be loaded when the user launch a game session. To generate this json file:
+1. Open the jupyter notebook (requirements Python 3.X and numpy)
+2. Use the function generate_json("puzzle_data.json",SIZE_OF_PUZZLE,NUMBER_OF_PIECES,STANDARD_DEVIATION_OF_PIECE_SIZE,STD_INTERVALL) and replace : 
+    * SIZE_OF_PUZZLE by an integer N (the puzzle grid generated will be a N x N x N matrix). N = 4 for example
+    * NUMBER_OF_PIECES by an integer K which is the number of pieces in your grid. K = 11 for example
+    * STANDARD_DEVIATION_OF_PIECE_SIZE by a float S which is the standard deviation of the piece size. S = 1.6 for example
+    * STD_INTERVAL by a float I which represent the interval such as a grid is considered valid if the standard deviation of the piece size is in the interval \[S-I;S+I\]. I = 0.1 for example
+3. Your puzzle grid json file is generated in the same folder as **Game_mx.ipynb**. Note that the name *puzzle_data.json* can be changed but requires to modify Read_Write_json.cs file in the unity package 
 
 ## Setup Unity and Azure
 If you want to use or modify the game :
@@ -46,18 +57,19 @@ If you want to use or modify the game :
     :white_check_mark: UserNotificationListener <br>
     :white_check_mark: GazeInput <br>
     </details>
-6. When your unity project will be build : go to the build file and open ./<Nameofyourapp>/
+6. When your unity project will be build : go to the build file and open ./*Nameofyourapp*/Package.appxmanifest and in the section <Capabilities> add the line : **<uap:Capability Name="documentsLibrary"/>** and save
+7. Deploy your solution on your device
 - - - -
 In our case we used Azure to load the puzzle file grid (that was stored on an azure container) feel free to load the file directly from the device by modifying code;
 If you want to use this solution, you will need to configure Azure : 
 
-5. Create/Sign in with an azure account
-6. Go to Storage accounts and create a new storage account
+8. Create/Sign in with an azure account
+9. Go to Storage accounts and create a new storage account
     * Basics : Name : **mxdatacollection** - Region : your choice - Performance : your choice - Redundancy : your choice
     * Advanced : Require secure transfer for REST API operations : **DISABLED**
-7. Once the storage account is created, click on it and create 2 new containers in it (choose **Blob** or **Container** for *Public Access Level*) named **data** and **puzzlejson**.
+10. Once the storage account is created, click on it and create 2 new containers in it (choose **Blob** or **Container** for *Public Access Level*) named **data** and **puzzlejson**.
 
 (Note that all proposed names can be changed but you will need to modify them in the c# script Read_Write_json.cs)
 
-8. Upload the puzzle grid json file "puzzle_data.json" in the puzzlejson container
-9. You are ready to play !
+11. Upload the puzzle grid json file "puzzle_data.json" in the puzzlejson container
+12. You are ready to play !
