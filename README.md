@@ -16,7 +16,11 @@ As this game was used for data collection purpose, for each session (1/2/3) the 
 * Puzzle ID
 * Level of Difficulty
 * Time to solve
+* Mental Effort the user had to put in a puzzle to solve it (player assessment)
+* Difficuly of the puzzle felt by the user (player assessment)
 * Puzzle state (every second)
+
+## Some Cool Media on the game
 
 ## Generate the Puzzle file
 The puzzle played in the game are pregenerated with the python notebook **Game_mx.ipynb**, with this script you can generate 200 (or how many you want) puzzle and write the grid in a json file. This file will be loaded when the user launch a game session. To generate this json file:
