@@ -62,19 +62,22 @@ If you want to use or modify the game :
     :white_check_mark: UserNotificationListener <br>
     :white_check_mark: GazeInput <br>
     </details>
-6. When your unity project will be build : go to the build file and open ./*Nameofyourapp*/Package.appxmanifest and in the section <Capabilities> add the line : **<uap:Capability Name="documentsLibrary"/>** and save
-7. Deploy your solution on your device
 - - - -
 In our case we used Azure to load the puzzle file grid (that was stored on an azure container) feel free to load the file directly from the device by modifying code;
 If you want to use this solution, you will need to configure Azure : 
 
-8. Create/Sign in with an azure account
-9. Go to Storage accounts and create a new storage account
+6. Create/Sign in with an azure account
+7. Go to Storage accounts and create a new storage account
     * Basics : Name : **mxdatacollection** - Region : your choice - Performance : your choice - Redundancy : your choice
     * Advanced : Require secure transfer for REST API operations : **DISABLED**
-10. Once the storage account is created, click on it and create 2 new containers in it (choose **Blob** or **Container** for *Public Access Level*) named **data** and **puzzlejson**.
+8. Once the storage account is created, click on it and create 2 new containers in it (choose **Blob** or **Container** for *Public Access Level*) named **data** and **puzzlejson**.
 
 (Note that all proposed names can be changed but you will need to modify them in the c# script Read_Write_json.cs)
 
-11. Upload the puzzle grid json file "puzzle_data.json" in the puzzlejson container
-12. You are ready to play !
+9. Upload the puzzle grid json file "puzzle_data.json" in the puzzlejson container
+10. In azure go to your Storage Account>Access Key and copy one of the key value and paste it as the value of the variable *accessKey* in the script *Read_Write_json.cs*
+- - - -
+11. Build your Unity Project
+12. When your unity project will be build : go to the build file and open ./*Nameofyourapp*/Package.appxmanifest and in the section <Capabilities> add the line : **<uap:Capability Name="documentsLibrary"/>** and save
+13. Deploy your solution on your device
+14. You are ready to play !
