@@ -21,8 +21,6 @@ As this game was used for data collection purpose, for each session (1/2/3) the 
 * Difficuly of the puzzle felt by the user (player assessment)
 * Puzzle state (every second)
 
-## Some Cool Medias on the Game
-
 ## Generate the Puzzle file
 The puzzle played in the game are pregenerated with the python notebook **Game_mx.ipynb**, with this script you can generate 200 (or how many you want) puzzle and write the grid in a json file. This file will be loaded when the user launch a game session. To generate this json file:
 1. Open the jupyter notebook (requirements Python 3.X and numpy)
