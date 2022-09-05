@@ -738,6 +738,7 @@ public class Grid_big_cube_update : MonoBehaviour
         date = date.Replace(':', '_');
         sessionDateTime = date;
         puzzleScore = 0f;
+        numPuzzlesCompleted = 0;
 #if WINDOWS_UWP
         CreateFiles();
 #endif
@@ -772,13 +773,14 @@ public class Grid_big_cube_update : MonoBehaviour
                 if (Time.time > trackingRecordingTime)
                 {
                     trackingRecordingTime = Time.time + period;
+                    UpdateStateMatrix();
                     TrackingData trackingData = new TrackingData();
                     trackingData.time = DateTime.Now.ToString();
                     trackingData.headPosition = mainCamera.transform.position;
                     trackingData.matrix = JsonConvert.SerializeObject(matrix);
                     SaveTrackingJson(trackingData, false);
 
-                    UpdateStateMatrix();
+                    
                     if (CheckMatrixCompletion())
                     {
                         Debug.Log("Puzzle completed");
