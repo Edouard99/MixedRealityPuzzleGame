@@ -1,0 +1,109 @@
+There are 4 analytics files : 
+- DD_MM_YYYY_HH_MIN_S_AM/PM_matrix_MODE.json
+- DD_MM_YYYY_HH_MIN_S_AM/PM_tracking_MODE.json
+- DD_MM_YYYY_HH_MIN_S_AM/PM_player_MODE.json
+- DD_MM_YYYY_HH_MIN_S_AM/PM_assessment_MODE.json
+
+
+
+matrix file : {"matrixWithNumber":"{\"0\":\"2\",\"1\":\"X\",\"2\":\"X\",\"3\":\"2\",\"4\":\"X\",\"5\":\"3\",\"6\":\"2\",\"7\":\"3\",\"8\":\"3\",\"9\":\"1\",\"10\":\"1\",\"11\":\"4\",\"12\":\"2\",\"13\":\"X\",\"14\":\"4\",\"15\":\"2\",\"16\":\"3\",\"17\":\"5\",\"18\":\"1\",\"19\":\"4\",\"20\":\"4\",\"21\":\"2\",\"22\":\"5\",\"23\":\"5\",\"24\":\"5\",\"25\":\"5\",\"26\":\"5\"}","time":"7/29/2022 12:53:56 PM"}
+======================
+"matrixWithNumber":
+"X" means that the location is empty, number N "N" means that the location is taken by the piece with the number N
+the matrix here is a 3x3x3 --> 27 locations, you can rebuild the matrix from this string by knowing that :
+0 = matrix[0,0,0] 
+1 = matrix[0,0,1] 
+2 = matrix[0,0,2] 
+3 = matrix[0,1,0] 
+4 = matrix[0,1,1] 
+5 = matrix[0,1,2] 
+6 = matrix[0,2,0] 
+7 = matrix[0,2,1] 
+8 = matrix[0,2,2] 
+9 = matrix[1,0,0] 
+10 = matrix[1,0,1] 
+11 = matrix[1,0,2] 
+12 = matrix[1,1,0] 
+13 = matrix[1,1,1] 
+14 = matrix[1,1,2] 
+15 = matrix[1,2,0] 
+16 = matrix[1,2,1] 
+17 = matrix[1,2,2] 
+18 = matrix[2,0,0] 
+19 = matrix[2,0,1] 
+20 = matrix[2,0,2] 
+21 = matrix[2,1,0] 
+22 = matrix[2,1,1] 
+23 = matrix[2,1,2] 
+24 = matrix[2,2,0] 
+25 = matrix[2,2,1] 
+26 = matrix[2,2,2] 
+=======================
+"time":
+is the time when this line was written
+
+--------------------------
+--------------------------
+--------------------------
+tracking file : {"time":"7/29/2022 12:54:33 PM","headPosition":{"x":-0.1456337720155716,"y":-0.03131621703505516,"z":1.942639946937561},"matrix":"{\"0\":1,\"1\":0,\"2\":0,\"3\":1,\"4\":1,\"5\":1,\"6\":1,\"7\":1,\"8\":1,\"9\":1,\"10\":1,\"11\":1,\"12\":1,\"13\":1,\"14\":1,\"15\":1,\"16\":1,\"17\":1,\"18\":1,\"19\":1,\"20\":1,\"21\":1,\"22\":1,\"23\":1,\"24\":1,\"25\":1,\"26\":1}"}
+============================
+"time": is the time when this line was written
+============================
+"headPosition":position of the user at the given time in the unity space
+============================
+"matrix":
+a 1 means that the location is occupied by a piece that is snapped
+a 0 means that the location is unoccupied
+the matrix here is a 3x3x3 --> 27 locations, you can rebuild the matrix from this string by knowing that :
+0 = matrix[0,0,0] 
+1 = matrix[0,0,1] 
+2 = matrix[0,0,2] 
+3 = matrix[0,1,0] 
+4 = matrix[0,1,1] 
+5 = matrix[0,1,2] 
+6 = matrix[0,2,0] 
+7 = matrix[0,2,1] 
+8 = matrix[0,2,2] 
+9 = matrix[1,0,0] 
+10 = matrix[1,0,1] 
+11 = matrix[1,0,2] 
+12 = matrix[1,1,0] 
+13 = matrix[1,1,1] 
+14 = matrix[1,1,2] 
+15 = matrix[1,2,0] 
+16 = matrix[1,2,1] 
+17 = matrix[1,2,2] 
+18 = matrix[2,0,0] 
+19 = matrix[2,0,1] 
+20 = matrix[2,0,2] 
+21 = matrix[2,1,0] 
+22 = matrix[2,1,1] 
+23 = matrix[2,1,2] 
+24 = matrix[2,2,0] 
+25 = matrix[2,2,1] 
+26 = matrix[2,2,2] 
+-------------------------
+-------------------------
+-------------------------
+player file :{"number_of_completed_puzzle":2,"puzzle_ID":4,"puzzle_lvl":"","score":104.45716857910156,"time":"7/29/2022 12:56:21 PM"}
+=========================
+"number_of_completed_puzzle": is the number of puzzle that the user has completed
+=========================
+"puzzle_ID": is the index of the selected puzzle in the json file puzzle_data.json (0= first puzzle; 1= second puzzle; etc...)
+=========================
+"puzzle_lvl": not used anymore (was usefull for random mode)
+=========================
+"score": score of the user = 100*(time_for_the_session(depending on easy/medium/hard --> 3min for easy) - time_to_do_the_puzzle)/time_for_the_session
+=========================
+"time": time when this line was written
+=========================
+IF THE SCORE DOES NOT CHANGE/IF THE NUMBER OF COMPLETED PUZZLE DOES NOT CHANGE this means that the player pressed the button to switch puzzle and failed to solve the puzzle
+------------------------
+------------------------
+------------------------
+assessment file :
+
+------------------------
+------------------------
+------------------------
+Each time the player switch puzzle (either by pressing the button or by finishing a puzzle) a line "NEW PUZZLE" is added to each file
