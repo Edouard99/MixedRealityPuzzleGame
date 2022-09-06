@@ -88,7 +88,7 @@ public class Grid_big_cube_update : MonoBehaviour
 
     [HideInInspector] public Material mat_transp;
     [HideInInspector] public Renderer rend_test;
-    [HideInInspector] public List<float[,,]> list_matrix = new List<float[,,]>();    
+      
     [HideInInspector] public float size_Big_Cube;
     [HideInInspector] public string mode;
     [HideInInspector] public bool nextPuzzle = false;
@@ -112,6 +112,7 @@ public class Grid_big_cube_update : MonoBehaviour
 
 
     private int seed;
+    public List<float[,,]> list_matrix = new List<float[,,]>();
     private float trackingRecordingTime = 0.0f;
     private List<int> used_Puzzle_Index = new List<int>();
     private int puzzle_index;

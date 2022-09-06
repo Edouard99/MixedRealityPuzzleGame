@@ -8,6 +8,8 @@ using Microsoft.MixedReality.Toolkit.UI;
 public class Timer : MonoBehaviour
 {
     //Handle time during a session
+    [HideInInspector] public bool uploadasked=false;
+    [HideInInspector] public float timeassessment=0f;
 
     public float timeRemaining = 30;
     public bool timerIsRunning = false;
@@ -53,7 +55,7 @@ public class Timer : MonoBehaviour
             else if(timeRemaining<0 & hasAssess==false)
             {
                 //Handle assessment when time is up (while the player has not assessed the session is not ended)
-                TimeText.text = "Time has run out! Please Complete the assessment to end the session ...";
+                BannerText.text = "Time has run out! Please Complete the assessment to end the session ...";
                 GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().assessemnt_button.SetActive(true);
                 GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().assessment_canvas.SetActive(true);
                 foreach (GameObject piece in GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().pieces_List)
@@ -69,7 +71,7 @@ public class Timer : MonoBehaviour
             else
             {
                 //When the player assess the data are send to the azure storage and the session is finished
-                TimeText.text = "Time has run out! Returning to menu...";
+                BannerText.text = "Returning to Menu in 10 seconds please wait...";
                 timeRemaining = 0;
                 foreach (GameObject piece in GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().pieces_List)
                 {
@@ -80,15 +82,33 @@ public class Timer : MonoBehaviour
                     Destroy(aimcube);
                 }
                 timerIsRunning = false;
-                GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().mode = GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().mode;
-                GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().sessionDateTime = GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().sessionDateTime;
-                GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().uploadJSON("_matrix_");
-                GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().uploadJSON("_tracking_");
-                GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().uploadJSON("_player_");
-                GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().uploadJSON("_assessment_");
-                hasAssess = false;
-                MainMenu.SetActive(true);
-                Level.SetActive(false);
+                if (uploadasked == false)
+                {
+                    GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().mode = GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().mode;
+                    GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().sessionDateTime = GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().sessionDateTime;
+                    //GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().final_upload = true;
+                    GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().uploadJSON("_matrix_");
+                    GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().uploadJSON("_tracking_");
+                    GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().uploadJSON("_player_");
+                    GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().uploadJSON("_assessment_");
+                    uploadasked = true;
+                    timeassessment = Time.time;
+                }
+                if (uploadasked == true)
+                {
+                    BannerText.text = "Returning to Menu in 10 seconds please wait...";
+                    if (Time.time > timeassessment + 10)
+                    {
+                        uploadasked = false;
+                        hasAssess = false;
+                        MainMenu.SetActive(true);
+                        Level.SetActive(false);
+                    }
+                }
+                
+                //hasAssess = false;
+                //MainMenu.SetActive(true);
+                //Level.SetActive(false);
             }
         }
         else

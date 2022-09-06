@@ -27,7 +27,6 @@ public class Read_Write_json : MonoBehaviour
     [HideInInspector] public string mode;
     [HideInInspector] public bool is_Reading;
     [HideInInspector] public bool assessupload;
-    [HideInInspector] public bool assesscomplete;
 
     //These are Azure storage credentials for the container (with 2 subcontainers "data" and "puzzlejson")
     private string storageAccount= "mxdatacollection";
@@ -36,7 +35,9 @@ public class Read_Write_json : MonoBehaviour
     private string container_puzzle_json = "puzzlejson";
     private StorageServiceClient client;
     private BlobService blobService;
-    
+    public GameObject MainMenu;
+    public GameObject Level;
+
 
     public void Load_puzzle_json(RestResponse response)
     {

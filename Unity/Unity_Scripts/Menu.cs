@@ -34,10 +34,10 @@ public class Menu : MonoBehaviour
         selection.puzzle_lvl = "easy";
         selection.mode = "easy";
         selection.nextPuzzle = true;
-        selection.timelvl = 3 * 60;
+        selection.timelvl = 4 * 60;
         Level.SetActive(true);
         timer = GameObject.Find("Time").GetComponent<Timer>();
-        timer.timeRemaining = 60*3;     //Time for the session
+        timer.timeRemaining = 60*4;     //Time for the session
         timer.timerIsRunning = true;
     }
 
@@ -48,9 +48,10 @@ public class Menu : MonoBehaviour
         selection.puzzle_lvl = "medium";
         selection.mode = "medium";
         selection.nextPuzzle = true;
+        selection.timelvl = 8 * 60;
         Level.SetActive(true);
         timer = GameObject.Find("Time").GetComponent<Timer>();
-        timer.timeRemaining = 60*7;     //Time for the session
+        timer.timeRemaining = 60*8;     //Time for the session
         timer.timerIsRunning = true;
     }
 
@@ -61,9 +62,10 @@ public class Menu : MonoBehaviour
         selection.puzzle_lvl = "hard";
         selection.mode = "hard";
         selection.nextPuzzle = true;
+        selection.timelvl = 10 * 60;
         Level.SetActive(true);
         timer = GameObject.Find("Time").GetComponent<Timer>();
-        timer.timeRemaining = 60*8;     //Time for the session
+        timer.timeRemaining = 60*10;     //Time for the session
         timer.timerIsRunning = true;
     }
     public void VeryHardButton()
