@@ -81,7 +81,7 @@ public class Timer : MonoBehaviour
                 {
                     Destroy(aimcube);
                 }
-                timerIsRunning = false;
+                
                 if (uploadasked == false)
                 {
                     GameObject.Find("Empty_Big_Cube").GetComponent<Read_Write_json>().mode = GameObject.Find("Empty_Big_Cube").GetComponent<Grid_big_cube_update>().mode;
@@ -103,6 +103,7 @@ public class Timer : MonoBehaviour
                         hasAssess = false;
                         MainMenu.SetActive(true);
                         Level.SetActive(false);
+                        timerIsRunning = false;
                     }
                 }
                 
