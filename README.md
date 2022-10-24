@@ -23,7 +23,9 @@ As this game was used for data collection purposes, for each session (1/2/3) the
 
 ## Some Cool Medias of the Game
 
-![](https://github.com/Edouard99/MixedRealityPuzzleGame/Media/game_gif.gif)
+<p align="center">
+  <img alt="Game" title="Game" src="./Media/game_gif.gif" width="450">
+</p>
 <p align="center">
   <img alt="Game" title="Game" src="./Media/game_Moment3.jpg" width="450">
 </p>
