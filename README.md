@@ -1,6 +1,6 @@
 ## Table Of Contents
 * [Introduction](#introduction)
-* [Some Cool Medias on the Game](#some-cool-medias-on-the-game)
+* [Some Cool Medias of the Game](#some-cool-medias-of-the-game)
 * [Generate The Puzzle File](#generate-the-puzzle-file)
 * [Setup Unity and Azure](#setup-unity-and-azure)
 
@@ -20,6 +20,18 @@ As this game was used for data collection purposes, for each session (1/2/3) the
 * Mental Effort the user had to put in a puzzle to solve it (player assessment)
 * Difficulty of the puzzle felt by the user (player assessment)
 * Puzzle state (every second)
+
+## Some Cool Medias of the Game
+
+![](https://github.com/Edouard99/MixedRealityPuzzleGame/Media/game_gif.gif)
+<p align="center">
+  <img alt="Game" title="Game" src="./Media/game_Moment3.jpg" width="450">
+</p>
+<p align="center">
+  <img alt="Game" title="Game" src="./Media/game_Moment2.PNG" width="450">
+</p>
+
+
 
 ## Generate the Puzzle file
 The puzzle played in the game are pre-generated with the python notebook **Game_mx.ipynb**, with this script you can generate 200 (or how many you want) puzzles and write the grid in a json file. This file will be loaded when the user launches a game session. To generate this json file:
