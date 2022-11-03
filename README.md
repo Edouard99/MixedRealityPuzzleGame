@@ -2,7 +2,7 @@
 * [Introduction](#introduction)
 * [Some Cool Medias of the Game](#some-cool-medias-of-the-game)
 * [Generate The Puzzle File](#generate-the-puzzle-file)
-* [Setup Unity and Azure](#setup-unity-and-azure)
+* [Set up Unity and Azure](#set-up-unity-and-azure)
 
 ## Introduction
 This project aims to develop a puzzle game for Mixed Reality Environment as Hololens 2 (on which I have worked). This puzzle game challenges the user to solve 3d holographic puzzle games. There is 3 different level of difficulty. A tutorial is also implemented to teach the user how to interact with Holographic pieces.
@@ -45,7 +45,7 @@ The puzzle played in the game are pre-generated with the python notebook **Game_
     * STD_INTERVAL by a float I which represents the interval such as a grid is considered valid if the standard deviation of the piece size is in the interval \[S-I;S+I\]. I = 0.1 for example
 3. Your puzzle grid json file is generated in the same folder as **Game_mx.ipynb**. Note that the name *puzzle_data.json* can be changed but requires modifying Read_Write_json.cs file in the unity package 
 
-## Setup Unity and Azure
+## Set up Unity and Azure
 If you want to use or modify the game :
 1. Create a new 3d core Unity Project (version 2020.3.28f1 or above to avoid UnityWebRequest issue).
 2. Set up your Project for Mixed Reality using <a href="https://github.com/microsoft/MixedRealityToolkit-Unity">MRTK</a>. This <a href="https://docs.microsoft.com/en-us/learn/modules/learn-mrtk-tutorials/1-3-exercise-configure-unity-for-windows-mixed-reality?tabs=openxr">tutorial</a> gives all the guidelines to set up your project.
