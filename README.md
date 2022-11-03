@@ -5,7 +5,7 @@
 * [Setup Unity and Azure](#setup-unity-and-azure)
 
 ## Introduction
-This project aims to develop a puzzle game for Mixed Reality Environment as Hololens 2 (on which I have worked). This puzzle game challenges the user to solve 3d holographic puzzle game. There is 3 different level of difficulty. A tutorial is also implemented to teach the user how to interact with Holographic pieces.
+This project aims to develop a puzzle game for Mixed Reality Environment as Hololens 2 (on which I have worked). This puzzle game challenges the user to solve 3d holographic puzzle games. There is 3 different level of difficulty. A tutorial is also implemented to teach the user how to interact with Holographic pieces.
 
 <p align="center">
   <img alt="Game" title="Game" src="./Media/game_Moment.jpg" width="450">
@@ -42,13 +42,13 @@ The puzzle played in the game are pre-generated with the python notebook **Game_
     * SIZE_OF_PUZZLE by an integer N (the puzzle grid generated will be a N x N x N matrix). N = 4 for example
     * NUMBER_OF_PIECES by an integer K which is the number of pieces in your grid. K = 11 for example
     * STANDARD_DEVIATION_OF_PIECE_SIZE by a float S which is the standard deviation of the piece size. S = 1.6 for example
-    * STD_INTERVAL by a float I which represent the interval such as a grid is considered valid if the standard deviation of the piece size is in the interval \[S-I;S+I\]. I = 0.1 for example
+    * STD_INTERVAL by a float I which represents the interval such as a grid is considered valid if the standard deviation of the piece size is in the interval \[S-I;S+I\]. I = 0.1 for example
 3. Your puzzle grid json file is generated in the same folder as **Game_mx.ipynb**. Note that the name *puzzle_data.json* can be changed but requires modifying Read_Write_json.cs file in the unity package 
 
 ## Setup Unity and Azure
 If you want to use or modify the game :
 1. Create a new 3d core Unity Project (version 2020.3.28f1 or above to avoid UnityWebRequest issue).
-2. Setup your Project for Mixed Reality using <a href="https://github.com/microsoft/MixedRealityToolkit-Unity">MRTK</a>. This <a href="https://docs.microsoft.com/en-us/learn/modules/learn-mrtk-tutorials/1-3-exercise-configure-unity-for-windows-mixed-reality?tabs=openxr">tutorial</a> gives all the guidelines to setup your project.
+2. Set up your Project for Mixed Reality using <a href="https://github.com/microsoft/MixedRealityToolkit-Unity">MRTK</a>. This <a href="https://docs.microsoft.com/en-us/learn/modules/learn-mrtk-tutorials/1-3-exercise-configure-unity-for-windows-mixed-reality?tabs=openxr">tutorial</a> gives all the guidelines to set up your project.
 3. Then in Unity : Assets>Import Package>Custom Package... and select the Game.unitypackage.
 4. Open the scene "Game_MX" in the file scene.
 5. In Unity : Edit>Project Settings>Player>Publishing Settings>Capabilities check :
@@ -75,7 +75,7 @@ If you want to use or modify the game :
     :white_check_mark: GazeInput <br>
     </details>
 - - - -
-In our case we used Azure to load the puzzle file grid (that was stored on an azure container) feel free to load the file directly from the device by modifying the code.
+In our case, we used Azure to load the puzzle file grid (that was stored on an azure container) feel free to load the file directly from the device by modifying the code.
 If you want to use this solution, you will need to configure Azure : 
 
 6. Create/Sign in with an azure account.
@@ -87,9 +87,9 @@ If you want to use this solution, you will need to configure Azure :
 (Note that all proposed names can be changed, yet you will need to modify them in the c# script Read_Write_json.cs)
 
 9. Upload the puzzle grid json file "puzzle_data.json" in the puzzlejson container.
-10. In azure go to your Storage Account>Access Key and copy one of the key value and paste it as the value of the variable *accessKey* in the script *Read_Write_json.cs*.
+10. In azure go to your Storage Account>Access Key and copy one of the key values and paste it as the value of the variable *accessKey* in the script *Read_Write_json.cs*.
 - - - -
 11. Build your Unity Project.
-12. When your unity project will be build : go to the build file and open ./*Nameofyourapp*/Package.appxmanifest and in the section <Capabilities> add the line : **<uap:Capability Name="documentsLibrary"/>** and save it.
+12. When your unity project will be build : go to the built file and open ./*Nameofyourapp*/Package.appxmanifest and in the section <Capabilities> add the line : **<uap:Capability Name="documentsLibrary"/>** and save it.
 13. Deploy your solution on your device.
 14. You are ready to play !
