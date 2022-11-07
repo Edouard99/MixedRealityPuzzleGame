@@ -5,7 +5,7 @@
 * [Set up Unity and Azure](#set-up-unity-and-azure)
 
 ## Introduction
-This project aims to develop a puzzle game for Mixed Reality Environment as Hololens 2 (on which I have worked). This puzzle game challenges the user to solve 3d holographic puzzle games. There is 3 different level of difficulty. A tutorial is also implemented to teach the user how to interact with Holographic pieces.
+This project aims at developing a puzzle game for Mixed Reality Environment as Hololens 2 (on which I have worked). This puzzle game challenges the user to solve 3d holographic puzzle games. There is 3 different level of difficulty. A tutorial is also provided to teach the user how to interact with holographic pieces.
 
 <p align="center">
   <img alt="Game" title="Game" src="./Media/game_Moment.jpg" width="450">
